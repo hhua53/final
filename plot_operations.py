@@ -16,7 +16,8 @@ from db_operations import DBOperations
 from scrape_weather import WeatherScraper
 import pprint
 import matplotlib.pyplot as plt
-import datetime
+from datetime import date
+
 
 class PlotOperations(object):
     """docstring for PlotOperations."""
@@ -27,7 +28,7 @@ class PlotOperations(object):
 
     def scrape_and_save_weather_data(self, end_year:int = 0, end_month:int = 12):
         if not end_year:
-            today = datetime.today()
+            today = date.today()
             end_year = today.year
             end_month = today.month
         myweather = WeatherScraper()
@@ -104,7 +105,7 @@ class PlotOperations(object):
         plt.ylabel('Temperature (Celsius)')
         plt.title(plot_title)
         plt.xlim(0,13)
-        save_path = './images/boxplot.jpg'
+        save_path = './boxplot.jpg'
         plt.savefig(save_path)
         plt.show()
 
@@ -120,7 +121,7 @@ class PlotOperations(object):
         plt.ylabel('Temperature (Celsius)')
         plot_title = 'Daily Temperature Distribution for:'+ str(year) + '/' + str(month)
         plt.title(plot_title)
-        save_path = './images/lineplot.jpg'
+        save_path = './lineplot.jpg'
         plt.savefig(save_path)
         plt.show()
 
